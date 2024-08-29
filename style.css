@@ -1,0 +1,134 @@
+.heading {
+    font-size: 36px;
+    color: #1f1919;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+body {
+    background: linear-gradient(135deg, 
+        #FF6B6B,
+        #FF8E53, 
+        #FFD54F, 
+        #4CAF50, 
+        #2196F3, 
+        #673AB7, 
+        #E91E63  
+    );
+
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 0;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+    margin-top: -40px; 
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+}
+
+
+.color-picker-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 30px 40px;
+    background-color: #e3f2fd;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    gap: 25px; 
+}
+
+.preview-box {
+    width: 150px;
+    height: 150px;
+    border: 1.5px solid #2f80ed;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.right-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    gap: 4px; 
+}
+
+#colorLabel,
+#hexLabel {
+    font-weight: bold;
+    color: #2f80ed;
+    margin-bottom: 5px;
+}
+
+#colorPicker {
+    width: 150px;
+    height: 45px;
+    border-radius: 8px;
+    border: 1.5px solid #2f80ed;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+#colorPicker:hover {
+    border-color: #56ccf2;
+}
+
+#hexInput {
+    padding: 9px;
+    border-radius: 8px;
+    border: 1.5px solid #2F80ED;
+    font-size: 16px;
+    text-align: center;
+    width: 140px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
+}
+
+#hexInput:focus {
+    outline: none;
+    border-color: #56CCF2;
+}
+
+.error-message {
+    color: #ff4d4d;
+    visibility: hidden;
+    font-size: 12px;
+    margin-top: -5px;
+}
+
+.reset-btn {
+    background-color: #2f80ed;
+    color: #ffffff;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 20px;
+}
+
+.reset-btn:hover {
+    background-color: #56ccf2;
+    transform: scale(1.05);
+}
+
+.reset-btn:active {
+    background-color: #1a6ed3;
+    transform: scale(0.95);
+}
+
+.reset-btn:focus {
+    outline: 2px solid #1c69d4;
+    outline-offset: 2px;
+}

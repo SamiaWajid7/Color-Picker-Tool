@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Picker Tool</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1 class="heading">Color Picker Tool</h1>
+    <div class="color-picker-container">
+      <!-- Main container for the color picker tool -->
+      <div class="content">
+        <!-- Content container holding the preview box and right column -->
+        <div class="preview-box"></div>
+        <!-- Preview box for displaying the selected color -->
+        <div class="right-column">
+          <label for="hexInput" id="hexLabel">Enter HEX Code</label>
+          <input type="text" id="hexInput" maxlength="7" />
+          <small id="error" class="error-message">Invalid hex code!</small>
+          <label for="colorPicker" id="colorLabel">Pick a Color</label>
+          <input type="color" id="colorPicker" value="#D9D9D9" />
+        </div>
+      </div>
+      <button class="reset-btn">Reset</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
