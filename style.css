@@ -160,8 +160,11 @@ body {
     width: 100px;
     height: 35px; 
   }
-
+.preview-box {
+    width: 120px;
+    height: 120px;
+}
   #hexInput {
-    width: 120px; 
+    width: 100px; 
   }
 }
