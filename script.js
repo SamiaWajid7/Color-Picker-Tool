@@ -1,15 +1,15 @@
 const colorPicker = document.getElementById('colorPicker');
 const hexInput = document.getElementById('hexInput');
-const previewBox = document.querySelector('.preview-box'); 
+const previewBox = document.querySelector('.preview-box');
 const resetBtn = document.querySelector('.reset-btn');
 const errorMessage = document.getElementById('error');
 
 // Define the default color
 const defaultColor = '#ffffff';
 
-// Function to validate hexadecimal color code
+// Function to validate 6-character hexadecimal color code
 function isValidHex(hex) {
-    let regex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+    let regex = /^#([A-Fa-f0-9]{6})$/;
     return regex.test(hex);
 }
 
@@ -23,8 +23,12 @@ function updateColor(newColor) {
 // Event listener for color picker
 colorPicker.addEventListener('input', function() {
     const selectedColor = this.value;
-    updateColor(selectedColor);
-    errorMessage.style.visibility = 'hidden'; 
+    if (isValidHex(selectedColor)) {
+        updateColor(selectedColor);
+        errorMessage.style.visibility = 'hidden';
+    } else {
+        errorMessage.style.visibility = 'visible';
+    }
 });
 
 // Event listener for hex code input
@@ -34,18 +38,19 @@ hexInput.addEventListener('input', function() {
     if (!hexColor.startsWith('#')) {
         hexColor = '#' + hexColor;
     }
+    // Only consider 6-character hex codes as valid
     if (isValidHex(hexColor)) {
         updateColor(hexColor);
-        errorMessage.style.visibility = 'hidden'; 
+        errorMessage.style.visibility = 'hidden';
     } else {
-        errorMessage.style.visibility = 'visible'; 
+        errorMessage.style.visibility = 'visible';
     }
 });
 
 // Event listener for reset button
 resetBtn.addEventListener('click', function() {
     updateColor(defaultColor);
-    errorMessage.style.visibility = 'hidden'; 
+    errorMessage.style.visibility = 'hidden';
 });
 
 // Set the default color on page load
