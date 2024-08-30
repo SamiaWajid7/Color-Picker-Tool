@@ -5,7 +5,7 @@ const resetBtn = document.querySelector('.reset-btn');
 const errorMessage = document.getElementById('error');
 
 // Define the default color
-const defaultColor = '#ffffff';
+const defaultColor = '#FFFFFF';
 
 // Function to validate 6-character hexadecimal color code
 function isValidHex(hex) {
@@ -13,19 +13,24 @@ function isValidHex(hex) {
     return regex.test(hex);
 }
 
-// Function to update the preview box color, color picker, and hex input field
+// Function to update the preview box color and color picker
 function updateColor(newColor) {
-    previewBox.style.backgroundColor = newColor;
-    colorPicker.value = newColor;
-    hexInput.value = newColor.toUpperCase();
+    if (isValidHex(newColor)) {
+        previewBox.style.backgroundColor = newColor;
+        colorPicker.value = newColor;
+        hexInput.value = newColor.toUpperCase();
+        errorMessage.style.visibility = 'hidden';
+    } else {
+        errorMessage.style.visibility = 'visible';
+    }
 }
 
 // Event listener for color picker
 colorPicker.addEventListener('input', function() {
     const selectedColor = this.value;
+    // Check if the color picker value is a valid 6-character hex
     if (isValidHex(selectedColor)) {
         updateColor(selectedColor);
-        errorMessage.style.visibility = 'hidden';
     } else {
         errorMessage.style.visibility = 'visible';
     }
@@ -33,15 +38,13 @@ colorPicker.addEventListener('input', function() {
 
 // Event listener for hex code input
 hexInput.addEventListener('input', function() {
-    // Ensure the input always starts with a hashtag
     let hexColor = this.value;
     if (!hexColor.startsWith('#')) {
         hexColor = '#' + hexColor;
     }
-    // Only consider 6-character hex codes as valid
-    if (isValidHex(hexColor)) {
+    // Only update if the hex code is exactly 7 characters long (including #)
+    if (hexColor.length === 7 && isValidHex(hexColor)) {
         updateColor(hexColor);
-        errorMessage.style.visibility = 'hidden';
     } else {
         errorMessage.style.visibility = 'visible';
     }
@@ -56,6 +59,5 @@ resetBtn.addEventListener('click', function() {
 // Set the default color on page load
 window.onload = function() {
     updateColor(defaultColor);
-    // Set the initial value of the hex input with the hashtag symbol
     hexInput.value = defaultColor;
 };
